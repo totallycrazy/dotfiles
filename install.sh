@@ -8,7 +8,8 @@ link() {
   dst="$HOME/.$2"
 
   if [ -e "$dst" ] && [ ! -L "$dst" ]; then
-    echo "⚠️  $dst exists – skipping"
+    echo "⚠️  $dst exists – skipping, but setting execution rights..."
+    chmod u+x "$dst"
     return
   fi
 
