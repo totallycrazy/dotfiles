@@ -5,5 +5,5 @@ esac
 
 . ~/.bash_aliases
 
-# . "$HOME/.cargo/env"
-# eval "$(zoxide init bash)"
+. "$HOME/.cargo/env"
+eval "$(zoxide init bash)"
