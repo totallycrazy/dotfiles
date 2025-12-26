@@ -1,21 +1,30 @@
-#!/usr/bin/env bash
-set -e
+case $- in
+  *i*) ;;
+    *) return;;
+esac
 
-DOTFILES="$HOME/dotfiles"
+export OSH='/usr/local/share/oh-my-bash'
+OSH_THEME="font"
+HIST_STAMPS='yyyy-mm-dd'
 
-link() {
-  src="$DOTFILES/$1"
-  dst="$HOME/.$2"
+OMB_USE_SUDO=true
 
-  if [ -e "$dst" ] && [ ! -L "$dst" ]; then
-    echo "⚠️  $dst exists – skipping"
-    return
-  fi
+completions=(
+  git
+  composer
+  ssh
+)
 
-  ln -sf "$src" "$dst"
-  echo "✓ $dst"
-}
+aliases=(
+  general
+)
 
-link bash/bashrc bashrc
-link bash/bash_profile bash_profile
-link git/gitconfig gitconfig
+plugins=(
+  git
+  bashmarks
+)
+
+source "$OSH"/oh-my-bash.sh
+
+. "$HOME/.cargo/env"
+eval "$(zoxide init bash)"
