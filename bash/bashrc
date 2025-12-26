@@ -98,3 +98,5 @@ if [ -f "$HOME/.cargo/env" ]; then
 fi
 
 eval "$(zoxide init bash)"
+
+is init --generate-full-configs bash
