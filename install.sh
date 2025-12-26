@@ -78,4 +78,4 @@ if ! echo "$PATH" | grep -q "$HOME/.local/bin"; then
   echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.bashrc"
 fi
 
-source "$HOME/.bashrc"
+. "$HOME/.bashrc"
