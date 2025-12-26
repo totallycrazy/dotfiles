@@ -93,5 +93,8 @@ ${py}$ "
 
 # source ~/.bash-autocomplete/bash-autocomplete.sh
 
-. "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
+fi
+
 eval "$(zoxide init bash)"
