@@ -9,7 +9,7 @@ link() {
 
   # Ziel existiert und ist KEIN Symlink → nicht anfassen
   if [[ -e "$dst" && ! -L "$dst" ]]; then
-    echo "⚠️  $dst exists – skipping"
+    echo "⚠️  $dst exists - skipping"
     return
   fi
 
@@ -28,13 +28,12 @@ link() {
   fi
 }
 
+link bash/profile bash_profile
 link bash/aliases bash_aliases
 link bash/bashrc bashrc
-link bash/profile bash_profile
 link git/gitconfig gitconfig
 
 echo "Installing packages…"
-
 sudo apt update
 sudo apt install -y \
   curl wget git magic-wormhole fd-find sd nnn micro broot \
