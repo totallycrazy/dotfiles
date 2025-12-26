@@ -8,8 +8,8 @@ echo "sourcing aliases"
 
 #nnn  broot lazygit rclone trippy xh yq duf gdu du-dust lnav procs gping fzf zoxide ripgrep bat lsd eza dtrx lazydocker
 
-alias ll='lsd --group-directories-first -lah'
-alias find='fd'
-alias sed='sd'
-alias cat='bat'
-alias ps='procs'
+alias ll='lsd --group-directories-first -lah '
+alias find='fd '
+alias sed='sd '
+alias cat='bat '
+alias ps='procs '
