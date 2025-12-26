@@ -144,7 +144,7 @@ command -v batcat >/dev/null && ln -sf "$(command -v batcat)" "$HOME/.local/bin/
 link bash/bashrc bashrc
 link bash/profile bash_profile
 link bash/aliases bash_aliases
-link git/gitconfig git
+# link git/gitconfig git
 
 # ------------------------------------------------------------
 # reload shell config
