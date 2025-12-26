@@ -24,6 +24,20 @@ repo_depth() {
   [[ "$pwd_rel" == "$PWD" ]] && echo "" || echo "${pwd_rel//[^\/]/}/"
 }
 
+fs_readonly() {
+  [[ ! -w "$PWD" ]]
+}
+
+py_env() {
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    basename "$VIRTUAL_ENV"
+  elif [[ -n "$CONDA_DEFAULT_ENV" ]]; then
+    echo "conda:$CONDA_DEFAULT_ENV"
+  elif [[ -n "$POETRY_ACTIVE" ]]; then
+    echo "poetry"
+  fi
+}
+
 # ---------- prompt ----------
 
 set_prompt() {
@@ -40,9 +54,13 @@ set_prompt() {
   local status=""
   [[ $last_status -ne 0 ]] && status="${RED}✗${last_status}${RESET} "
 
-  local venv=""
-  [[ -n "$VIRTUAL_ENV" ]] && venv="${MAGENTA}($(basename "$VIRTUAL_ENV"))${RESET} "
-  [[ -n "$IN_NIX_SHELL" ]] && venv="${MAGENTA}(nix)${RESET} "
+  local fswarn=""
+  fs_readonly && fswarn="${RED}RO${RESET} "
+
+  local py=""
+  local pyname
+  pyname=$(py_env)
+  [[ -n "$pyname" ]] && py="${MAGENTA}py:${pyname}${RESET} "
 
   if in_git_repo; then
     local branch dirty depth
@@ -51,12 +69,12 @@ set_prompt() {
     git_dirty && dirty="*"
     depth=$(repo_depth)
 
-    PS1="${status}${GREEN}\u@\h${RESET} ${BLUE}\w${RESET} \
+    PS1="${status}${fswarn}${GREEN}\u@\h${RESET} ${BLUE}\w${RESET} \
 ${YELLOW} ${branch}${dirty}${RESET} ${DIM}${depth}${RESET}
-${venv}$ "
+${py}$ "
   else
-    PS1="${status}${GREEN}\u@\h${RESET} ${BLUE}\w${RESET}
-${venv}$ "
+    PS1="${status}${fswarn}${GREEN}\u@\h${RESET} ${BLUE}\w${RESET}
+${py}$ "
   fi
 }
 
