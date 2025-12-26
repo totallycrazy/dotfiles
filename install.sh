@@ -20,4 +20,4 @@ link bash/bashrc bashrc
 link bash/bash_profile bash_profile
 link git/gitconfig gitconfig
 
-sudo apt install -y curl wget git magic-wormhole fd-find sd nnn micro broot lazygit rclone trippy xh yq duf gdu du-dust lnav procs gping fzf zoxide ripgrep bat lsd eza dtrx lazydocker
+sudo apt install -y curl wget git magic-wormhole fd-find sd nnn micro broot lazygit trippy xh yq duf gdu du-dust lnav procs gping fzf zoxide ripgrep bat lsd eza dtrx
