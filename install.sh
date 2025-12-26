@@ -13,6 +13,7 @@ link() {
   fi
 
   ln -sf "$src" "$dst"
+  chmod u+x "$dst"
   echo "✓ $dst"
 }
 
