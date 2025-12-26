@@ -2,6 +2,7 @@
 set -euo pipefail
 
 DOTFILES="$HOME/dotfiles"
+git pull
 
 ask_on_conflict() {
   local dst="$1"
