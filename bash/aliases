@@ -1,2 +1,2 @@
 echo "sourcing aliases"
-alias ll='lsd -lah --group-directories-first'
+alias ll='lsd --group-directories-first -lah'
