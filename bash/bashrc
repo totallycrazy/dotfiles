@@ -3,7 +3,7 @@ case $- in
     *) return;;
 esac
 
-. ~/.bash_aliases
+. "$HOME/.bash_aliases"
 
 . "$HOME/.cargo/env"
 eval "$(zoxide init bash)"
