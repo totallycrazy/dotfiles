@@ -15,13 +15,17 @@ link() {
     return
   fi
 
+  if [ -e "$src" ] ; then
   ln -sf "$src" "$dst"
   echo "✓ $dst"
+  fi
+
   if [ -e "$dst" ] ; then
     chmod u+x "$dst"
   fi
 }
 
+link bash/aliases bash_aliases
 link bash/bashrc bashrc
 link bash/profile bash_profile
 link git/gitconfig gitconfig
