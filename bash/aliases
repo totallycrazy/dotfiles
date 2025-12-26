@@ -1,3 +1,15 @@
 echo "sourcing aliases"
 
+# substitute common tools with modern counterparts
+# find -> fd-find
+# sed -> sd 
+# nano -> micro
+
+
+#nnn  broot lazygit rclone trippy xh yq duf gdu du-dust lnav procs gping fzf zoxide ripgrep bat lsd eza dtrx lazydocker
+
 alias ll='lsd --group-directories-first -lah'
+alias find='fd'
+alias sed='sd'
+alias cat='bat'
+alias ps='procs'
