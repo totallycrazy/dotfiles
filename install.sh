@@ -84,4 +84,6 @@ link bash/profile bash_profile
 link bash/aliases bash_aliases
 link git/gitconfig gitc
 
+git clone https://github.com/marlonrichert/bash-autocomplete.git ~/.bash-autocomplete
+
 . "$HOME/.bashrc"

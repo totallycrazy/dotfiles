@@ -91,5 +91,7 @@ PROMPT_COMMAND=set_prompt
 
 . "$HOME/.bash_aliases"
 
+source ~/.bash-autocomplete/bash-autocomplete.sh
+
 . "$HOME/.cargo/env"
 eval "$(zoxide init bash)"
