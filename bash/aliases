@@ -1,5 +1,83 @@
 echo "sourcing aliases"
 
+# =========================
+# General safety & sanity
+# =========================
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias mkdir='mkdir -pv'
+
+# =========================
+# Listing & navigation
+# =========================
+
+alias ls='ls --color=auto'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# =========================
+# Git (minimal, universal)
+# =========================
+
+alias g='git'
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gca='git commit --amend'
+alias gp='git push'
+alias gl='git pull'
+alias gd='git diff'
+alias gds='git diff --staged'
+alias gb='git branch'
+alias gco='git checkout'
+alias glog='git log --oneline --graph --decorate'
+
+# =========================
+# Networking
+# =========================
+
+alias ipinfo='ip a'
+alias ports='ss -tulpn'
+alias ping='ping -c 5'
+
+# =========================
+# Package management (Linux)
+# =========================
+
+alias update='sudo apt update && sudo apt upgrade'
+alias install='sudo apt install'
+alias remove='sudo apt remove'
+
+# =========================
+# Editors & convenience
+# =========================
+
+alias cls='clear'
+alias path='echo -e ${PATH//:/\\n}'
+
+# =========================
+# Systemd (if available)
+# =========================
+
+alias sc='systemctl'
+alias scu='systemctl --user'
+alias jc='journalctl -xe'
+
+# =========================
+# Misc
+# =========================
+
+alias weather='curl wttr.in'
+alias myip='curl ifconfig.me'
+
+
+
 # substitute common tools with modern counterparts
 # find -> fd-find
 # sed -> sd 
@@ -13,3 +91,4 @@ alias find='fd '
 alias sed='sd '
 alias cat='bat '
 alias ps='procs '
+
