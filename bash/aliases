@@ -1,2 +1,3 @@
 echo "sourcing aliases"
+
 alias ll='lsd --group-directories-first -lah'
