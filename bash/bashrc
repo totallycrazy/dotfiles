@@ -3,28 +3,7 @@ case $- in
     *) return;;
 esac
 
-export OSH='/usr/local/share/oh-my-bash'
-OSH_THEME="font"
-HIST_STAMPS='yyyy-mm-dd'
-
-OMB_USE_SUDO=true
-
-completions=(
-  git
-  composer
-  ssh
-)
-
-aliases=(
-  general
-)
-
-plugins=(
-  git
-  bashmarks
-)
-
-source "$OSH"/oh-my-bash.sh
+source .bash_aliases
 
 . "$HOME/.cargo/env"
 eval "$(zoxide init bash)"
