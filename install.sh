@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# git clone https://github.com/totallycrazy/dotfiles.git ~/dotfiles
+# cd ~/dotfiles
+# ./install.sh
+
 DOTFILES="$HOME/dotfiles"
 
 git pull
