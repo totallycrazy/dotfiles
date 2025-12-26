@@ -37,6 +37,7 @@ alias gds='git diff --staged'
 alias gb='git branch'
 alias gco='git checkout'
 alias glog='git log --oneline --graph --decorate'
+alias gittrashandfetch='git fetch --all && git reset --hard origin/$(git branch --show-current) && git clean -fd'
 
 # =========================
 # Networking
