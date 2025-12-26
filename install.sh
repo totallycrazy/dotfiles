@@ -57,9 +57,9 @@ link() {
   [[ -x "$src" ]] && chmod u+x "$dst"
 }
 
+link bash/bashrc bashrc
 link bash/profile bash_profile
 link bash/aliases bash_aliases
-link bash/bashrc bashrc
 link git/gitconfig gitconfig
 
 echo "Installing packages…"
@@ -77,5 +77,10 @@ command -v batcat >/dev/null && ln -sf "$(command -v batcat)" "$HOME/.local/bin/
 if ! echo "$PATH" | grep -q "$HOME/.local/bin"; then
   echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.bashrc"
 fi
+
+link bash/bashrc bashrc
+link bash/profile bash_profile
+link bash/aliases bash_aliases
+link git/gitconfig gitc
 
 . "$HOME/.bashrc"
