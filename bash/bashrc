@@ -3,6 +3,65 @@ case $- in
     *) return;;
 esac
 
+# ---------- helpers ----------
+
+in_git_repo() {
+  git rev-parse --is-inside-work-tree >/dev/null 2>&1
+}
+
+git_branch() {
+  git branch --show-current 2>/dev/null
+}
+
+git_dirty() {
+  ! git diff --quiet --ignore-submodules HEAD 2>/dev/null
+}
+
+repo_depth() {
+  local root
+  root=$(git rev-parse --show-toplevel 2>/dev/null) || return
+  local pwd_rel=${PWD#"$root"}
+  [[ "$pwd_rel" == "$PWD" ]] && echo "" || echo "${pwd_rel//[^\/]/}/"
+}
+
+# ---------- prompt ----------
+
+set_prompt() {
+  local last_status=$?
+
+  local RESET="\[\e[0m\]"
+  local DIM="\[\e[2m\]"
+  local RED="\[\e[31m\]"
+  local GREEN="\[\e[32m\]"
+  local YELLOW="\[\e[33m\]"
+  local BLUE="\[\e[34m\]"
+  local MAGENTA="\[\e[35m\]"
+
+  local status=""
+  [[ $last_status -ne 0 ]] && status="${RED}✗${last_status}${RESET} "
+
+  local venv=""
+  [[ -n "$VIRTUAL_ENV" ]] && venv="${MAGENTA}($(basename "$VIRTUAL_ENV"))${RESET} "
+  [[ -n "$IN_NIX_SHELL" ]] && venv="${MAGENTA}(nix)${RESET} "
+
+  if in_git_repo; then
+    local branch dirty depth
+    branch=$(git_branch)
+    dirty=""
+    git_dirty && dirty="*"
+    depth=$(repo_depth)
+
+    PS1="${status}${GREEN}\u@\h${RESET} ${BLUE}\w${RESET} \
+${YELLOW} ${branch}${dirty}${RESET} ${DIM}${depth}${RESET}
+${venv}$ "
+  else
+    PS1="${status}${GREEN}\u@\h${RESET} ${BLUE}\w${RESET}
+${venv}$ "
+  fi
+}
+
+PROMPT_COMMAND=set_prompt
+
 . "$HOME/.bash_aliases"
 
 . "$HOME/.cargo/env"
