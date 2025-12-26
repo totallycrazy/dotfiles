@@ -3,6 +3,15 @@ case $- in
     *) return;;
 esac
 
+
+cd() {
+  if [[ $# -eq 1 && -d "$1" ]]; then
+    builtin cd "$1"
+  else
+    z "$@"
+  fi
+}
+
 # ---------- helpers ----------
 
 in_git_repo() {
